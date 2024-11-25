@@ -34,9 +34,6 @@ class DufercoDataset(Dataset):
         self.image_paths = list(self.dataset.keys())
     
     def __len__(self):
-        """
-        Return the number of samples in the dataset.
-        """
         return len(self.image_paths)
 
     def __getitem__(self, idx):
