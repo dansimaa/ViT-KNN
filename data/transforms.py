@@ -1,6 +1,6 @@
 from torchvision import transforms
 
-# Data transformation pipelines for training and testing datasets
+# Data transformation pipelines for training and testing
 train_transforms = transforms.Compose([
     transforms.Resize((224, 224)),  
     transforms.ToTensor(),
