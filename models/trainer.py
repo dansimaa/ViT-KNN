@@ -47,7 +47,6 @@ def train_model(
         all_labels = []
         all_predictions = []
 
-        # Training loop
         for images, labels in tqdm(train_loader, desc=f"Epoch {epoch + 1}/{num_epochs}"):
             images, labels = images.to(device), labels.to(device)
             labels = labels.unsqueeze(1).float()
