@@ -103,19 +103,6 @@ def evaluate_model(model, test_loader, device, beta=0.5):
     print(f"Confusion Matrix:\n{confusion}")
 
 
-def main(args):
-    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-    print(f"Evaluating on: {device}")
-
-    test_loader = prepare_test_loader(
-        args.data_config_path,
-        args.batch_size
-    )
-    model = load_model(args.model_path, device)
-    
-    evaluate_model(model, test_loader, device, beta=args.beta)
-
-
 def argument_parser():
     parser = argparse.ArgumentParser(
         description="Evaluate EfficientNet on Duferco test dataset"
@@ -145,6 +132,19 @@ def argument_parser():
         help="Beta value for F-beta score"
     )
     return parser.parse_args()
+
+
+def main(args):
+    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+    print(f"Evaluating on: {device}")
+
+    test_loader = prepare_test_loader(
+        args.data_config_path,
+        args.batch_size
+    )
+    model = load_model(args.model_path, device)
+    
+    evaluate_model(model, test_loader, device, beta=args.beta)
 
 
 if __name__ == "__main__":

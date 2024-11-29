@@ -115,38 +115,6 @@ def create_logging_directory(base_path):
     return log_dir, checkpoint_path
 
 
-def main(args):
-    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-    print(f"Running on: {device}")
-
-    train_loader, val_loader = prepare_dataloaders(
-        args.data_config_path, 
-        args.batch_size
-    )
-
-    model = configure_model(device)
-    criterion, optimizer = configure_training(
-        model, 
-        args.learning_rate,
-        args.weight_decay
-    )
-    log_dir, checkpoint_path = create_logging_directory(args.checkpoint_path)
-    writer = SummaryWriter(log_dir=log_dir)
-   
-    train_model(
-        model, 
-        train_loader, 
-        val_loader, 
-        criterion, 
-        optimizer, 
-        args.num_epochs,
-        writer, 
-        device, 
-        checkpoint_path
-    )
-    writer.close()  
-
-
 def parse_arguments():
     parser = argparse.ArgumentParser(description="Train EfficientNet on Duferco dataset")
     parser.add_argument(
@@ -186,6 +154,38 @@ def parse_arguments():
         help="Checkpoint path"
     )
     return parser.parse_args()
+
+
+def main(args):
+    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+    print(f"Running on: {device}")
+
+    train_loader, val_loader = prepare_dataloaders(
+        args.data_config_path, 
+        args.batch_size
+    )
+
+    model = configure_model(device)
+    criterion, optimizer = configure_training(
+        model, 
+        args.learning_rate,
+        args.weight_decay
+    )
+    log_dir, checkpoint_path = create_logging_directory(args.checkpoint_path)
+    writer = SummaryWriter(log_dir=log_dir)
+   
+    train_model(
+        model, 
+        train_loader, 
+        val_loader, 
+        criterion, 
+        optimizer, 
+        args.num_epochs,
+        writer, 
+        device, 
+        checkpoint_path
+    )
+    writer.close() 
 
 
 if __name__ == "__main__":    
