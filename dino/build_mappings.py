@@ -3,11 +3,11 @@ import os
 import json
 
 
-def save_mapping(path, map):
+def save_mapping(path, mapping):
     """Save the mapping dictionary to a JSON file."""
     os.makedirs(os.path.dirname(path), exist_ok=True) 
     with open(path, "w") as json_file:
-        json.dump(map, json_file, indent=4)
+        json.dump(mapping, json_file, indent=4)
 
 
 def get_image_paths(directory):
