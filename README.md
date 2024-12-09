@@ -1,14 +1,20 @@
 # ViT-KNN: Semi-Supervised Pseudo-Labeling with Vision Transformers and KNN 
 
-This repository contains the codebase developed by the **CUDA_Libre** team for the [Neural Wave Hackathon 2024](https://neuralwave.ch/#/2024/recap), where our solution earned **1<sup>st</sup> place**. The project automates the verification of steel bar alignment in a rolling mill using state-of-the-art Computer Vision models, combining semi-supervised Vision Transformers (ViT) and KNN-based pseudo-labeling. By enhancing operational efficiency and reducing human error, this system offers a scalable solution to modernize manufacturing processes.
+This repository contains the codebase developed by the **CUDA_Libre** team for the [Neural Wave Hackathon 2024](https://neuralwave.ch/#/2024/recap), where our solution earned **1<sup>st</sup> place**. The project automates the verification of steel bar alignment in a rolling mill using state-of-the-art Computer Vision models, combining semi-supervised Vision Transformers (ViT) and KNN-based pseudo-labeling. By enhancing operational efficiency and reducing human error, this system offers a scalable solution to modernize steel bar manufacturing processes.
 
-![Steel Bar Alignment Example](./assets/sample_image.png)
+ 
+## Problem Context
 
-<div align="center">
-  Visualization of the three first principal components of the patch features of all frames, mapped to RGB values.
-</div>
+Fig. 1 depicts a sequence of steel bars moving towards a stopper on a rolling table. The goal is to assess whether the bars are properly aligned. Currently, this alignment check is performed manually by human operators who rely solely on visual inspection of real-time images. Determining alignment can be challenging due to uncertainties caused by various factors, including perspective distortions, vibrations, shadows, and inconsistent lighting conditions.
 
-## Project Overview
+<figure style="text-align: center;">
+  <img src="assets/sample_images.png" alt="Steel bar alignment process" width="1000" style="display: block; margin: 0 auto;">
+  <figcaption style="margin-top: 8px;">Fig. 1 Sample images showing a sequence of aligned and non-aligned bars approaching the stopper.</figcaption>
+</figure>
+
+
+<!-- ## Project Pipeline -->
+## Project Pipeline
 
 Manual inspection of steel bar alignment is a labor intensive task that can lead to errors due to operator fatigue. Our solution automates this verification, allowing plant operators to focus on more critical aspects of the production process. The workflow can be divided into two key stages:
 
@@ -66,7 +72,7 @@ Given the large, mostly unlabeled dataset of 15,630 images, we developed an effi
 This method enabled us to expand the labeled dataset efficiently without manual effort for each image
 
 
-## 2. Model Training and Inference
+### 2. Model Training and Inference
 The expanded dataset was used to train an [EfficientNet B0](https://pytorch.org/vision/main/models/generated/torchvision.models.efficientnet_b0.html) model, chosen for its balance of accuracy and computational efficiency:
 
 - **Preprocessing**: Images were resized to 256 pixels, centrally cropped to 224 pixels, and normalized using the mean [0.485, 0.456, 0.406] and standard deviation [0.229, 0.224, 0.225].
@@ -100,14 +106,14 @@ The project includes the following main components:
 - **`train.py`** and **`test.py`**: Scripts for training and evaluating the model.
 - **`requirements.txt`**: List of dependencies.
 
-## Dependencies
+## Dependencies/Installation
 
 Install the required packages with:
 ```bash
 pip install -r requirements.txt
 ```
 
-## Running the Code
+## Run the Code
 
 ### Training
 
