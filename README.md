@@ -1,6 +1,12 @@
 # ViT-KNN: Semi-Supervised Pseudo-Labeling with Vision Transformers and KNN 
 
-This repository contains the codebase developed by the **CUDA_Libre** team for the [Neural Wave Hackathon 2024](https://neuralwave.ch/#/2024/recap), where our solution earned **1<sup>st</sup>** place. The project automates the verification of steel bar alignment in a rolling mill using state-of-the-art AI methodologies to enhance operational efficiency and minimize human error.
+This repository contains the codebase developed by the **CUDA_Libre** team for the [Neural Wave Hackathon 2024](https://neuralwave.ch/#/2024/recap), where our solution earned **1<sup>st</sup> place**. The project automates the verification of steel bar alignment in a rolling mill using state-of-the-art Computer Vision models, combining semi-supervised Vision Transformers (ViT) and KNN-based pseudo-labeling. By enhancing operational efficiency and reducing human error, this system offers a scalable solution to modernize manufacturing processes.
+
+![Steel Bar Alignment Example](./assets/sample_image.png)
+
+<div align="center">
+  Visualization of the three first principal components of the patch features of all frames, mapped to RGB values.
+</div>
 
 ## Project Overview
 
