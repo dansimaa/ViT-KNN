@@ -106,27 +106,40 @@ The project includes the following main components:
 - **`train.py`** and **`test.py`**: Scripts for training and evaluating the model.
 - **`requirements.txt`**: List of dependencies.
 
-## Dependencies/Installation
+
+
+## Run the Code
+
+### Installation
 
 Install the required packages with:
 ```bash
 pip install -r requirements.txt
 ```
 
-## Run the Code
-
 ### Training
 
+To perform the Pseudo-Labeling check out the documentation: [DINOv2 KNN-based Pseudo-Labeling](dino/README.md).
 Run the training script directly:
 ```bash
-python train.py --data_config_path "dataset/processed_augmented_split.json" --batch_size 32 --num_epochs 30 --learning_rate 0.0001 --checkpoint_path "checkpoints/efficient_net"
+python train.py \
+    --data_config_path "dataset/augmented_split.json" \
+    --batch_size 32 \
+    --num_epochs 30 \
+    --learning_rate 0.0001 \
+    --checkpoint_path "checkpoints/efficient_net"
 ```
 
 ### Testing
 
-Evaluate the model using:
+Evaluate the model performance on the test set using:
 ```bash
-python test.py --data_config_path "dataset/split.json" --batch_size 16 --model_path "checkpoints/efficient_net/20241027_083453/model_epoch_10.pt"
+python test.py \
+    --data_config_path "dataset/split.json" \
+    --batch_size 16 \
+    --model_path "checkpoints/efficient_net/20241027_083453/model_epoch_10.pt"
 ```
+
+
 ## License
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
