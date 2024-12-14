@@ -9,7 +9,7 @@ Fig. 1 depicts a sequence of steel bars moving towards a stopper on a rolling ta
 
 <figure style="text-align: center;">
   <img src="assets/sample_images.png" alt="Steel bar alignment process" width="1000" style="display: block; margin: 0 auto;">
-  <figcaption style="margin-top: 8px;">Fig. 1 Sample images showing a sequence of aligned and non-aligned bars approaching the stopper.</figcaption>
+  <figcaption style="margin-top: 8px;">Fig. 1 Sample images showing a sequence of aligned and not aligned bars on a rolling table approaching the stopper.</figcaption>
 </figure>
 
 
@@ -35,8 +35,8 @@ To run the Pseudo-Labeling check out the documentation: [DINOv2 KNN-based Pseudo
 
 ### 2. Model Training, Inference and Results
 
-The expanded dataset was used to train an [EfficientNet B0](https://pytorch.org/vision/main/models/generated/torchvision.models.efficientnet_b0.html) model, chosen for its balance of accuracy and computational efficiency:
-We trained EfficientNet-B0 starting from the original weigths, adapting the classification layer to output a binary classification result for the alignment status. EfficientNet-B0 was also compared against the MobileNetV2 model.
+The expanded dataset was used to train an [EfficientNet-B0](https://pytorch.org/vision/main/models/generated/torchvision.models.efficientnet_b0.html) model, chosen for its balance of accuracy and computational efficiency.
+We trained EfficientNet-B0 starting from the original weigths, adapting the classification layer for binary classification measuring of the alignment status. EfficientNet-B0 was also compared against the MobileNetV2 model.
 
 - **Training Details**: The model was trained for 30 epochs, with the peak validation performance observed at epoch 10. Key performance metrics included:
   - **Accuracy**: 93.40%
@@ -44,7 +44,7 @@ We trained EfficientNet-B0 starting from the original weigths, adapting the clas
   - **Recall**: 95.82%
   - **F1 Score**: 95.09%
 
-- The model demonstrated reliable classification capabilities with a mean inference time on the test set of **0.0298 seconds per image**, meeting the real-time requirement of under 0.5 seconds per image.
+- The model demonstrated reliable classification capabilities with a mean inference time on the test set of **0.0298 seconds per image**, meeting the real-time inference requirement of under 0.5 seconds per image.
 
 <div align="center">
 
@@ -69,7 +69,7 @@ pip install -r requirements.txt
 ### Training
 
 To perform the Pseudo-Labeling check out the documentation: [DINOv2 KNN-based Pseudo-Labeling](dino/README.md).
-Run the training script directly:
+To train the EfficentNet-B0 model, run the training script:
 ```bash
 python train.py \
     --data_config_path "dataset/augmented_split.json" \
