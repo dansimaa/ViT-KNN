@@ -6,11 +6,25 @@ This repository contains the codebase developed by the **CUDA_Libre** team for t
 ## Problem Context
 
 Fig. 1 depicts a sequence of steel bars moving towards a stopper on a rolling table. The goal is to assess whether the bars are properly aligned. Currently, this alignment check is performed manually by human operators who rely solely on visual inspection of real-time images. Determining alignment can be challenging due to uncertainties caused by various factors, including perspective distortions, vibrations, shadows, and inconsistent lighting conditions.
+\
+Manual inspection of steel bar alignment is a labor intensive task that can lead to errors due to operator fatigue. 
+Our solution automates this verification, allowing plant operators to focus on more critical aspects of the production process. 
+The workflow of our approach can be divided into two key stages:
+
+1. **Semi-Supervised Labeling Workflow**
+2. **Model Training and Inference**
 
 <figure style="text-align: center;">
   <img src="assets/sample_images.png" alt="Steel bar alignment process" width="1000" style="display: block; margin: 0 auto;">
   <figcaption style="margin-top: 8px;">Fig. 1 Sample images showing a sequence of aligned and not aligned bars on a rolling table approaching the stopper.</figcaption>
 </figure>
+
+
+## Data Labeling Pipeline
+
+Here is a diagram illustrating the data labeling workflow, which integrates human labeling and pseudo-labeling by leveraging DINOv2 model embeddings and KNN label assignment through similarity search.
+
+![Data Labeling Workflow](assets/workflow.png)
 
 
 ## Methodology
